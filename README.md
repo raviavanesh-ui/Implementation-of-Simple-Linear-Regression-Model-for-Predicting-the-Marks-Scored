@@ -15,64 +15,56 @@ To write a program to predict the marks scored by a student using the simple lin
 
 ## Program:
 ```'''
-Program to implement the simple linear regression model for predicting the marks scored.
-Developed by : R.Avanesh
-RegisterNumber : 25018356
-
-
+name:Avanesh.R
+reg:25018356
+``````
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error,mean_squared_error
-df=pd.read_csv("student_scores.csv")
-print("HEAD:")
+df = pd.read_csv("C:/Users/admin/Desktop/student_scores.csv")
+print(df)
+df.head(0)
+df.tail(0)
 print(df.head())
-print("TAIL:")
 print(df.tail())
-x=df.iloc[:,:-1].values
-x
-y=df.iloc[:,1].values
-y
+x = df.iloc[:,:-1].values
+print(x)
+y = df.iloc[:,1].values
+print(y)
 from sklearn.model_selection import train_test_split
-X_train,X_test,Y_train,Y_test=train_test_split(x,y,test_size=1/3,random_state=0)
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=1/3,random_state=0)
 from sklearn.linear_model import LinearRegression
-regressor=LinearRegression()
-regressor.fit(X_train,Y_train)
-Y_pred=regressor.predict(X_test)
-Y_pred
-Y_test
-import matplotlib.pyplot as plt
-plt.scatter(X_train,Y_train,color='red')
-plt.plot(X_train,regressor.predict(X_train),color='yellow')
-plt.title("Hours Vs Scores(Train Set)")
+regressor = LinearRegression()
+regressor.fit(x_train,y_train)
+y_pred = regressor.predict(x_test)
+print(y_pred)
+print(y_test)
+#Graph plot for training data
+plt.scatter(x_train,y_train,color='black')
+plt.plot(x_train,regressor.predict(x_train),color='blue')
+plt.title("Hours vs Scores(Training set)")
 plt.xlabel("Hours")
 plt.ylabel("Scores")
 plt.show()
-plt.scatter(X_test,Y_test,color="green")
-plt.plot(X_test,regressor.predict(X_test),color="blue")
-plt.title("Hours vs scores (test set)")
+#Graph plot for test data
+plt.scatter(x_test,y_test,color='black')
+plt.plot(x_train,regressor.predict(x_train),color='red')
+plt.title("Hours vs Scores(Testing set)")
 plt.xlabel("Hours")
 plt.ylabel("Scores")
 plt.show()
-MSE = mean_squared_error(Y_test,Y_pred)
-print('MSE = ',MSE)
-MAE = mean_absolute_error(Y_test,Y_pred)
-print('MAE = ',MAE)
-RMSE=np.sqrt(MSE)
-print("RMSE = ",RMSE)
-/*
-Program to implement the simple linear regression model for predicting the marks scored.
-Developed by: 
-RegisterNumber:  
-*/
+mse=mean_absolute_error(y_test,y_pred)
+print('MSE = ',mse)
+mae=mean_absolute_error(y_test,y_pred)
+print('MAE = ',mae)
+rmse=np.sqrt(mse)
+print("RMSE= ",rmse)
 ```
 
 ## Output:
-'''image
-image
-image
-image
-image
-image
+'''
+<img width="1065" height="774" alt="361303137-bf2cc1d1-cc86-478c-8a56-50b419c99385" src="https://github.com/user-attachments/assets/13101ead-e055-48e1-a82a-5506395756c4" />
+
 ## Result:
 Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
